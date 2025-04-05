@@ -67,7 +67,7 @@ body {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background-color: var(--secondary-color);
+    background-color: #FFCC00;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,24 +75,61 @@ body {
     padding: 0 2rem;
 }
 
+.hero-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    gap: 4rem;
+    min-height: 100vh;
+    padding-bottom: 0;
+}
+
 .hero-content {
-    color: var(--background-color);
-    max-width: 800px;
+    color: #000000;
+    max-width: 600px;
+    text-align: left;
+    margin-bottom: 100px;
+}
+
+.hero-image {
+    flex-shrink: 0;
+    max-width: 500px;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-image img:hover {
+    opacity: 1;
 }
 
 .hero h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
+    color: #ffffff;
 }
 
 .highlight {
-    color: var(--primary-color);
+    color: #000000;
 }
 
 .hero h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: #000000;
 }
 
 .contact-info {
@@ -108,27 +145,28 @@ body {
     align-items: center;
     gap: 0.5rem;
     font-size: 1.1rem;
+    color: #ffffff;
 }
 
 .contact-info a {
-    color: var(--background-color);
+    color: #ffffff;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .contact-info a:hover {
-    color: var(--primary-color);
+    color: #000000;
 }
 
 .contact-info i {
-    color: var(--primary-color);
+    color: #000000;
 }
 
 .cta-button {
     display: inline-block;
     padding: 1rem 2rem;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    background-color: #000000;
+    color:#FFCC00;
     text-decoration: none;
     border-radius: 5px;
     margin-top: 2rem;
@@ -137,6 +175,8 @@ body {
 
 .cta-button:hover {
     transform: translateY(-3px);
+    background-color: #000000;
+    color: #FFCC00;
 }
 
 /* Section Styles */
@@ -423,12 +463,23 @@ footer {
         gap: 1rem;
     }
 
-    .hero h1 {
-        font-size: 2.5rem;
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+        align-items: center;
+        padding-bottom: 0;
     }
 
-    .hero h2 {
-        font-size: 1.5rem;
+    .hero-content {
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .hero-image {
+        max-width: 300px;
+        margin: 0;
+        padding: 0;
     }
 
     .timeline::before {
