@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Apaar Saroj, AI Engineer. MS in Information Technology (4.0 GPA). Builds LangGraph agents, LLM pipelines, and end-to-end AI systems from tool use to deployment.">
+<meta property="og:title" content="Apaar Saroj | AI Engineer">
+<meta property="og:description" content="MS in IT (4.0 GPA). Builds LangGraph agents, LLM pipelines, and deployed AI systems.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.apaarsaroj.com/">
+<title>Apaar Saroj | AI Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f8f4ef;--bg2:#ffffff;--bg3:#f1ece6;--bg4:#e8e2d8;
+  --text:#13110a;--text2:#5a5448;--text3:#9a9282;
+  --accent:#003153;--accent2:#003153;--accent3:#002040;
+  --border:#eae4da;--border2:#ddd6ca;
+  --green:#16a34a;--blue:#003153;
+  --email:#b91c1c;--linkedin:#003153;--github:#5b21b6;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(248,244,239,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.05em;color:var(--text)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:0.85rem;letter-spacing:0.04em;transition:color 0.2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--accent2);color:#fff;padding:0.45rem 1.1rem;border-radius:4px;font-size:0.82rem;font-weight:600;text-decoration:none;font-family:'Syne',sans-serif;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.85}
+section{padding:6rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+#hero{padding:10rem 2rem 6rem;min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(0,49,83,0.04) 0%,transparent 70%);pointer-events:none}
+.hero-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+h1.hero-name{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,5vw,4.2rem);font-weight:800;line-height:1.05;letter-spacing:-0.02em;color:var(--text);margin-bottom:0.5rem}
+h1.hero-name span{color:var(--accent)}
+.hero-title{font-family:'DM Mono',monospace;font-size:0.9rem;color:var(--accent);letter-spacing:0.05em;margin-bottom:1.5rem}
+.hero-desc{font-size:1.05rem;color:var(--text2);line-height:1.85;max-width:480px;margin-bottom:2.5rem}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--accent2);color:#fff;padding:0.75rem 1.75rem;border-radius:4px;font-family:'Syne',sans-serif;font-weight:600;font-size:0.9rem;text-decoration:none;transition:all 0.2s;display:inline-block}
+.btn-primary:hover{opacity:0.88;transform:translateY(-1px)}
+.btn-secondary{border:1.5px solid #b8b0a4;color:var(--text);padding:0.75rem 1.75rem;border-radius:4px;font-family:'Syne',sans-serif;font-weight:500;font-size:0.9rem;text-decoration:none;transition:all 0.2s;display:inline-block}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.stat{background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:1rem 1.25rem;box-shadow:0 1px 3px rgba(19,17,10,0.06)}
+.stat-num{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:700;color:var(--text);display:block}
+.stat-label{font-size:0.75rem;color:var(--text3);letter-spacing:0.05em;text-transform:uppercase;margin-top:0.2rem;display:block}
+.hero-card{background:#ffffff;border:1px solid var(--border2);border-radius:12px;padding:2rem;box-shadow:0 2px 8px rgba(19,17,10,0.07)}
+.hero-card-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem}
+.hero-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#002040,#003153);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:#fff}
+.hero-card-name{font-family:'Syne',sans-serif;font-weight:600;font-size:0.95rem;color:var(--text)}
+.hero-card-role{font-size:0.78rem;color:var(--text2)}
+.skill-bars{display:flex;flex-direction:column;gap:0.75rem}
+.skill-bar-item{display:flex;flex-direction:column;gap:0.3rem}
+.skill-bar-label{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--text2)}
+.skill-bar-track{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.skill-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#002040,#003153)}
+.hero-card-footer{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);display:flex;gap:0.5rem;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;padding:0.3rem 0.7rem;border-radius:4px;font-size:0.72rem;font-family:'DM Mono',monospace;background:var(--bg3);border:1px solid var(--border);color:var(--text2)}
+.badge.green{background:rgba(22,163,74,0.08);border-color:rgba(22,163,74,0.2);color:var(--green)}
+.badge.blue{background:rgba(0,49,83,0.08);border-color:rgba(0,49,83,0.2);color:var(--accent)}
+#about{background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.section-label{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:var(--text);margin-bottom:1.5rem}
+.about-text{color:var(--text2);line-height:1.9;margin-bottom:1rem;font-size:0.97rem}
+.about-left{display:flex;flex-direction:column;gap:0}.about-photo-row{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.75rem}.about-photo-row .section-label{margin-bottom:0.5rem}
+.about-photo{width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center 50%;border:2px solid var(--border2);display:block}
+.about-highlights{display:flex;flex-direction:column;gap:1rem;padding-top:calc(120px + 1.75rem + 2rem)}
+.highlight-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:#ffffff;border:1px solid var(--border2);border-radius:8px;box-shadow:0 1px 3px rgba(19,17,10,0.05)}
+.highlight-icon{width:32px;height:32px;border-radius:6px;background:rgba(0,49,83,0.06);border:1px solid rgba(0,49,83,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+.highlight-text strong{font-family:'Syne',sans-serif;font-size:0.88rem;color:var(--text);display:block;margin-bottom:0.2rem}
+.highlight-text span{font-size:0.8rem;color:var(--text3)}
+.projects-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.project-card{background:#ffffff;border:1px solid var(--border2);border-radius:12px;padding:1.75rem;transition:all 0.25s;position:relative;overflow:hidden;cursor:pointer;box-shadow:0 1px 4px rgba(19,17,10,0.06)}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent3),var(--accent));opacity:0;transition:opacity 0.3s}
+.project-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 8px 40px rgba(0,0,0,0.5)}
+.project-card:hover::before{opacity:1}
+.project-card.featured .project-title{font-size:1.4rem}
+.project-card.featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.project-card.secondary{opacity:0.88}
+.project-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.project-org{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);letter-spacing:0.05em}
+.project-badge-featured{font-family:'DM Mono',monospace;font-size:0.65rem;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);color:var(--green);padding:0.2rem 0.5rem;border-radius:3px}
+.project-badge-research{font-family:'DM Mono',monospace;font-size:0.65rem;background:rgba(107,111,133,0.15);border:1px solid rgba(107,111,133,0.25);color:var(--text3);padding:0.2rem 0.5rem;border-radius:3px}
+.project-title{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:600;margin-bottom:0.75rem;color:var(--text);line-height:1.3}
+.project-desc{font-size:0.88rem;color:var(--text2);line-height:1.75;margin-bottom:1.25rem}
+.project-shot{width:100%;border-radius:8px;border:1px solid var(--border2);margin-bottom:1rem;display:block}
+.project-outcome{background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:0.6rem 0.9rem;margin-bottom:1rem}
+.project-outcome-label{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.25rem}
+.project-outcome-text{font-size:0.82rem;color:var(--accent);font-weight:500}
+.project-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.tag{font-family:'DM Mono',monospace;font-size:0.7rem;padding:0.25rem 0.6rem;background:var(--bg3);border:1px solid var(--border2);border-radius:3px;color:var(--text3)}
+.project-actions{display:flex;align-items:center;gap:1rem;margin-top:0.5rem;flex-wrap:wrap}
+.deep-dive-btn{display:inline-flex;align-items:center;gap:0.4rem;font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);letter-spacing:0.05em;transition:color 0.2s;background:none;border:none;cursor:pointer;padding:0}
+.deep-dive-btn:hover{color:var(--text)}
+.live-demo-btn{display:inline-flex;align-items:center;gap:0.4rem;font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--green);transition:all 0.2s;text-decoration:none;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);padding:0.3rem 0.75rem;border-radius:4px}
+.live-demo-btn:hover{background:rgba(22,163,74,0.14)}
+#experience{background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border)}
+.timeline-item{position:relative;margin-bottom:3rem;padding-left:2rem}
+.timeline-item::before{content:'';position:absolute;left:-2.4rem;top:0.4rem;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--bg3)}
+.timeline-date{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);letter-spacing:0.05em;margin-bottom:0.5rem}
+.timeline-role{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:0.2rem}
+.timeline-company{font-size:0.85rem;color:var(--text2);margin-bottom:1rem}
+.timeline-bullets{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.timeline-bullets li{font-size:0.88rem;color:var(--text2);padding-left:1rem;position:relative;line-height:1.6}
+.timeline-bullets li::before{content:'--';position:absolute;left:0;color:var(--text3)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.skill-category{background:#ffffff;border:1px solid var(--border2);border-radius:12px;padding:1.5rem;box-shadow:0 1px 3px rgba(19,17,10,0.05)}
+.skill-cat-title{font-family:'Syne',sans-serif;font-size:0.88rem;font-weight:600;color:var(--accent);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem}
+.skill-cat-title::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent)}
+.skill-list{display:flex;flex-direction:column;gap:0.6rem}
+.skill-item{display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;color:var(--text);padding:0.4rem 0;border-bottom:1px solid var(--border)}
+.skill-item:last-child{border-bottom:none}
+.skill-level{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--text3)}
+#education{background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.edu-card{background:#ffffff;border:1px solid var(--border2);border-radius:12px;padding:1.75rem;box-shadow:0 1px 3px rgba(19,17,10,0.05)}
+.edu-card.primary{border-color:var(--accent);background:rgba(0,49,83,0.04)}
+.edu-degree{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:0.3rem}
+.edu-school{font-size:0.88rem;color:var(--accent);margin-bottom:0.5rem}
+.edu-meta{display:flex;gap:1rem;font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--text3);margin-bottom:1rem}
+.edu-gpa{display:inline-flex;align-items:center;gap:0.4rem;font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--green);background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);padding:0.3rem 0.7rem;border-radius:4px}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.cert-card{background:#ffffff;border:1px solid var(--border2);border-radius:8px;padding:1rem 1.25rem;box-shadow:0 1px 3px rgba(19,17,10,0.05)}
+.cert-name{font-size:0.85rem;font-weight:500;color:var(--text);margin-bottom:0.25rem}
+.cert-issuer{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--text3)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem}
+.testimonial-card{background:#ffffff;border:1px solid var(--border2);border-radius:12px;padding:1.75rem;box-shadow:0 1px 3px rgba(19,17,10,0.05)}
+.testimonial-quote{font-size:0.95rem;color:var(--text2);line-height:1.85;font-style:italic;margin-bottom:1.5rem;padding-left:1.25rem;border-left:2px solid var(--accent)}
+.testimonial-author{display:flex;align-items:center;gap:0.75rem}
+.testimonial-avatar{width:36px;height:36px;border-radius:50%;background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:0.75rem;font-weight:600;color:var(--accent);flex-shrink:0}
+.testimonial-name{font-size:0.85rem;font-weight:500;color:var(--text)}
+.testimonial-role{font-size:0.75rem;color:var(--text3);font-family:'DM Mono',monospace}
+#contact{border-top:1px solid var(--border)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-links{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.contact-link{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-radius:8px;text-decoration:none;transition:all 0.2s;border:1px solid var(--border2)}
+.contact-link:hover{transform:translateX(4px)}
+.contact-link.email{background:rgba(185,28,28,0.04);border-color:rgba(185,28,28,0.15)}
+.contact-link.email:hover{background:rgba(185,28,28,0.08);border-color:rgba(185,28,28,0.25)}
+.contact-link.linkedin{background:rgba(0,49,83,0.04);border-color:rgba(0,49,83,0.15)}
+.contact-link.linkedin:hover{background:rgba(0,49,83,0.08);border-color:rgba(0,49,83,0.25)}
+.contact-link.github{background:rgba(91,33,182,0.04);border-color:rgba(91,33,182,0.15)}
+.contact-link.github:hover{background:rgba(91,33,182,0.08);border-color:rgba(91,33,182,0.25)}
+.contact-link-label{display:flex;align-items:center;gap:0.75rem}
+.contact-link-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;font-weight:600}
+.contact-link-icon.email{background:rgba(185,28,28,0.08);color:var(--email)}
+.contact-link-icon.linkedin{background:rgba(0,49,83,0.08);color:var(--linkedin)}
+.contact-link-icon.github{background:rgba(91,33,182,0.08);color:var(--github)}
+.contact-link-name{font-size:0.9rem;font-weight:500;color:var(--text)}
+.contact-link-value{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--text3)}
+.contact-link.email .contact-link-arrow{color:var(--email)}
+.contact-link.linkedin .contact-link-arrow{color:var(--linkedin)}
+.contact-link.github .contact-link-arrow{color:var(--github)}
+.resume-cta{margin-top:2rem;padding:1.25rem 1.5rem;background:rgba(0,49,83,0.04);border:1px solid rgba(0,49,83,0.15);border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.resume-cta-text strong{display:block;font-family:'Syne',sans-serif;font-size:0.92rem;color:var(--text);margin-bottom:0.2rem}
+.resume-cta-text span{font-size:0.78rem;color:var(--text3)}
+.resume-btn{background:var(--accent2);color:#fff;padding:0.6rem 1.25rem;border-radius:4px;font-family:'Syne',sans-serif;font-size:0.82rem;font-weight:600;text-decoration:none;white-space:nowrap;transition:opacity 0.2s}
+.resume-btn:hover{opacity:0.88}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center}
+.footer-text{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--text3);letter-spacing:0.05em}
+.modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(19,17,10,0.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:#ffffff;border:1px solid var(--border);border-radius:16px;width:100%;max-width:800px;max-height:88vh;overflow-y:auto;position:relative;transform:translateY(20px);transition:transform 0.3s}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-header{padding:2rem 2rem 1.5rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:#ffffff;z-index:10;border-radius:16px 16px 0 0}
+.modal-close{position:absolute;top:1.5rem;right:1.5rem;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text2);width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;transition:all 0.2s;line-height:1}
+.modal-close:hover{color:var(--text);border-color:var(--border2)}
+.modal-org{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem}
+.modal-title{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;line-height:1.2;color:var(--text);margin-bottom:0.75rem;padding-right:2.5rem}
+.modal-links{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1rem}
+.modal-link{display:inline-flex;align-items:center;gap:0.4rem;font-family:'DM Mono',monospace;font-size:0.72rem;padding:0.4rem 0.9rem;border-radius:4px;text-decoration:none;transition:all 0.2s}
+.modal-link.github{background:var(--bg3);border:1px solid var(--border2);color:var(--text2)}
+.modal-link.github:hover{color:var(--text)}
+.modal-link.live{background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.25);color:var(--green)}
+.modal-link.live:hover{background:rgba(74,222,128,0.15)}
+.modal-body{padding:2rem}
+.modal-section{margin-bottom:2rem}
+.modal-section-title{font-family:'Syne',sans-serif;font-size:0.82rem;font-weight:600;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+.modal-section-title::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent)}
+.modal-desc{font-size:0.92rem;color:var(--text2);line-height:1.85}
+.modal-pipeline{display:flex;flex-direction:column;gap:0.6rem}
+.pipeline-step{display:flex;align-items:flex-start;gap:1rem;padding:0.75rem 1rem;background:var(--bg3);border:1px solid var(--border2);border-radius:8px}
+.pipeline-num{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);min-width:24px;padding-top:0.1rem}
+.pipeline-content strong{font-size:0.85rem;font-weight:500;color:var(--text);display:block;margin-bottom:0.15rem}
+.pipeline-content span{font-size:0.78rem;color:var(--text3)}
+.modal-results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.result-card{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:1rem 1.25rem}
+.result-num{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;color:var(--accent);display:block;margin-bottom:0.2rem}
+.result-label{font-size:0.75rem;color:var(--text3)}
+.modal-finding{background:var(--bg3);border-left:2px solid var(--accent);padding:0.75rem 1rem;border-radius:0 8px 8px 0;margin-bottom:0.75rem}
+.modal-finding-title{font-size:0.82rem;font-weight:500;color:var(--text);margin-bottom:0.25rem}
+.modal-finding-desc{font-size:0.78rem;color:var(--text3);line-height:1.6}
+.modal-tech-grid{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem}
+.modal-tag{font-family:'DM Mono',monospace;font-size:0.72rem;padding:0.3rem 0.7rem;background:var(--bg3);border:1px solid var(--border2);border-radius:4px;color:var(--text2)}
+.modal-table{width:100%;border-collapse:collapse;font-size:0.82rem}
+.modal-table th{text-align:left;font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--text3);letter-spacing:0.06em;text-transform:uppercase;padding:0.5rem 0.75rem;border-bottom:1px solid var(--border)}
+.modal-table td{padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text2)}
+.modal-table tr:last-child td{border-bottom:none}
+.modal-table td:first-child{color:var(--text)}
+.modal-note{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:0.9rem 1.1rem;font-size:0.8rem;color:var(--text3);line-height:1.7;margin-bottom:1rem}
+.modal-note strong{color:var(--text2)}
+.modal-divider{height:1px;background:var(--border);margin:1.5rem 0}
+@media(max-width:768px){
+.hero-grid,.about-grid,.contact-grid,.edu-grid{grid-template-columns:1fr}
+.projects-grid{grid-template-columns:1fr}
+.project-card.featured{grid-column:1;display:block}.about-highlights{padding-top:0}.about-photo-row{flex-direction:column;align-items:flex-start}
+.skills-grid,.certs-grid{grid-template-columns:1fr 1fr}
+.testimonials-grid{grid-template-columns:1fr}
+.nav-links{display:none}
+.modal-results-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">AS</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-tag">Open to work</div>
+      <h1 class="hero-name">Apaar<br><span>Saroj</span></h1>
+      <div class="hero-title">AI Engineer · Agent Builder · Data Scientist</div>
+      <p class="hero-desc">MS in Information Technology at Arizona State (4.0 GPA). Currently building LangGraph agents and LLM pipelines. Strong foundation in Python, ML, and production data systems from 3+ years at EXL and Team Computers.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#contact" class="btn-secondary">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Years Industry</span></div>
+        <div class="stat"><span class="stat-num">4.0</span><span class="stat-label">GPA at ASU</span></div>
+        <div class="stat"><span class="stat-num">AI</span><span class="stat-label">First Focus</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <div class="hero-avatar">AS</div>
+          <div><div class="hero-card-name">Apaar Saroj</div><div class="hero-card-role">AI Engineer · Open to Work</div></div>
+        </div>
+        <div class="skill-bars">
+          <div class="skill-bar-item"><div class="skill-bar-label"><span>LangGraph / Agent Systems</span><span>Proficient</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-label"><span>LLM Pipelines & Tool Use</span><span>Proficient</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-label"><span>ML & Statistical Modeling</span><span>Advanced</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-label"><span>Python & SQL</span><span>Expert</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%"></div></div></div>
+        </div>
+        <div class="hero-card-footer">
+          <span class="badge green">● Available</span>
+          <span class="badge blue">AI Engineer</span>
+          <span class="badge">Python</span><span class="badge">LangGraph</span><span class="badge">Anthropic API</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="about-photo-row">
+          <img src="image_6483441.JPG" alt="Apaar Saroj" class="about-photo">
+          <div>
+            <div class="section-label">About</div>
+            <h2 class="section-title">Analytics roots.<br>AI trajectory.</h2>
+          </div>
+        </div>
+        <div>
+          <p class="about-text">Recently finished an MS in Information Technology at Arizona State with a 4.0 GPA, and currently targeting AI Engineer roles focused on building agents, LLM pipelines, and end-to-end AI products. The shift from classical ML toward agentic systems is deliberate, and the projects here reflect it.</p>
+          <p class="about-text">The two most recent projects are both shipped AI systems: a Personal Trainer Agent built with LangGraph, ChromaDB, and PubMed-sourced RAG with persistent SQLite memory, and a News Summarizer built as a LangGraph state graph with a self-healing quality loop and LLM-as-Judge evaluation. Before grad school, three years of production data work at EXL and Team Computers built the engineering foundation that sits underneath those systems.</p>
+          <p class="about-text">Strongest in Python, LangGraph, the Anthropic API, and classical ML. Happy to talk about AI Engineer roles, interesting agent problems, or anything in the LLM space.</p>
+        </div>
+      </div>
+      <div>
+        <div class="about-highlights">
+          <div class="highlight-item"><div class="highlight-icon">🤖</div><div class="highlight-text"><strong>Agentic AI</strong><span>Shipped: Personal Trainer Agent (LangGraph + ChromaDB RAG + SQLite memory) and News Summarizer (LangGraph + LLM-as-Judge eval)</span></div></div>
+          <div class="highlight-item"><div class="highlight-icon">🎓</div><div class="highlight-text"><strong>Arizona State University</strong><span>MS Information Technology · 4.0 GPA · May 2026</span></div></div>
+          <div class="highlight-item"><div class="highlight-icon">⚡</div><div class="highlight-text"><strong>Production Data Background</strong><span>3+ years across data engineering, predictive modeling, and BI at EXL and Team Computers</span></div></div>
+          <div class="highlight-item"><div class="highlight-icon">📍</div><div class="highlight-text"><strong>Open to US roles</strong><span>Remote, hybrid, or on-site</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="projects-header">
+      <div><div class="section-label">Projects</div><h2 class="section-title">Work that ships.</h2></div>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card featured" onclick="openModal('trainer')">
+        <div>
+          <div class="project-meta"><span class="project-org">Personal Project · Agentic AI</span><span class="project-badge-featured" style="background:rgba(0,49,83,0.08);color:#003153;border-color:rgba(0,49,83,0.2)">FEATURED</span></div>
+          <h3 class="project-title">Personal Trainer AI Agent</h3>
+          <p class="project-desc">LangGraph agent with a RAG layer built on PubMed research and curated exercise data. Claude reasons over member profiles, workout history, and a ChromaDB fitness knowledge base before giving any advice. Persistent memory via SQLite checkpointing means the agent remembers across sessions, not just within one.</p>
+          <div class="project-tags"><span class="tag">Python</span><span class="tag">LangGraph</span><span class="tag">LangChain</span><span class="tag">ChromaDB</span><span class="tag">RAG</span><span class="tag">PubMed API</span><span class="tag">SQLite</span></div>
+          <div class="project-actions">
+            <button class="deep-dive-btn" onclick="event.stopPropagation();openModal('trainer')">Deep dive →</button>
+            <a class="modal-link github" href="https://github.com/apaarsaroj/personal-trainer-agent/tree/langchain" target="_blank" onclick="event.stopPropagation()" style="font-size:0.8rem;padding:0.4rem 0.9rem">⌥ GitHub</a>
+          </div>
+        </div>
+        <div>
+          <div class="project-outcome" style="margin-bottom:1rem"><div class="project-outcome-label">Graph</div><div class="project-outcome-text">chatbot node + ToolNode, conditional edge on tool_calls, SqliteSaver checkpointer</div></div>
+          <div class="project-outcome" style="margin-bottom:1rem"><div class="project-outcome-label">RAG knowledge base</div><div class="project-outcome-text">PubMed abstracts on 8 fitness topics + curated exercise markdown, chunked and embedded in ChromaDB</div></div>
+          <div class="project-outcome" style="margin-bottom:1rem"><div class="project-outcome-label">5 tools</div><div class="project-outcome-text">log_workout · get_workout_history · generate_workout_plan · get_user_profile · search_fitness_knowledge</div></div>
+          <div class="project-outcome"><div class="project-outcome-label">Memory</div><div class="project-outcome-text">SQLite checkpointer persists conversation state across sessions keyed by member PT-XXXX ID</div></div>
+        </div>
+      </div>
+
+      <div class="project-card featured" onclick="openModal('healthcare')">
+        <div>
+          <div class="project-meta"><span class="project-org">ASU · Graduate Capstone</span><span class="project-badge-featured">FEATURED</span></div>
+          <h3 class="project-title">Healthcare System Efficiency Evaluation Framework</h3>
+          <p class="project-desc">End-to-end ML pipeline scoring healthcare financing efficiency across 52 countries using WHO, OECD, and World Bank data. Shannon entropy derives objective indicator weights, fixed-effects regression and SHAP-explained Random Forests model the drivers, deployed as a live Streamlit dashboard with a policy simulator.</p>
+          <div class="project-tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">SHAP</span><span class="tag">K-Means</span><span class="tag">Random Forest</span><span class="tag">Streamlit</span><span class="tag">Docker</span><span class="tag">Panel Regression</span></div>
+          <div class="project-actions">
+            <button class="deep-dive-btn" onclick="event.stopPropagation();openModal('healthcare')">Deep dive →</button>
+            <a class="live-demo-btn" href="https://healthcare-efficiency-framework.streamlit.app" target="_blank" onclick="event.stopPropagation()">● Live Demo</a>
+          </div>
+        </div>
+        <div>
+          <img src="healthcare-dashboard.png" alt="Healthcare Efficiency dashboard screenshot" class="project-shot" loading="lazy">
+          <div class="project-outcome" style="margin-bottom:1rem"><div class="project-outcome-label">Scale</div><div class="project-outcome-text">52 countries · 22 years · 4 international data sources</div></div>
+          <div class="project-outcome" style="margin-bottom:1rem"><div class="project-outcome-label">Key Finding</div><div class="project-outcome-text">US spends 16.5% of GDP but ranks #43/52 in efficiency, and the model isolates why</div></div>
+          <div class="project-outcome"><div class="project-outcome-label">Deliverable</div><div class="project-outcome-text">6-tab Streamlit dashboard + Docker deployment + live policy simulator</div></div>
+        </div>
+      </div>
+
+      <div class="project-card" onclick="openModal('news')">
+        <div class="project-meta"><span class="project-org">Personal Project · Gen-AI</span><span class="project-badge-featured" style="background:rgba(0,49,83,0.06);color:#003153;border-color:rgba(0,49,83,0.15)">LangGraph</span></div>
+        <h3 class="project-title">AI News Summarizer</h3>
+        <p class="project-desc">LangGraph state graph that fetches news via NewsAPI, ranks articles by relevance using Claude as judge, summarizes with Claude Haiku, and auto-evaluates with LLM-as-Judge and ROUGE-L. Low-quality results trigger automatic query refinement and a retry loop, up to 3 iterations.</p>
+        <div class="project-outcome"><div class="project-outcome-label">Key Design</div><div class="project-outcome-text">5-node state graph · self-healing feedback loop · LLM-as-Judge · ROUGE-L scoring</div></div>
+        <div class="project-tags"><span class="tag">Python</span><span class="tag">LangGraph</span><span class="tag">LangChain</span><span class="tag">Claude Haiku</span><span class="tag">ROUGE-L</span><span class="tag">LLM-as-Judge</span><span class="tag">Streamlit</span></div>
+        <div class="project-actions">
+          <button class="deep-dive-btn" onclick="event.stopPropagation();openModal('news')">Deep dive →</button>
+          <a class="live-demo-btn" href="https://news-summarizer-langgraph.streamlit.app" target="_blank" onclick="event.stopPropagation()">● Live Demo</a>
+        </div>
+      </div>
+
+      <div class="project-card secondary" onclick="openModal('nlp')">
+        <div class="project-meta"><span class="project-org">ASU · NLP Exploration</span><span class="project-badge-research">Research</span></div>
+        <h3 class="project-title">Cross-Domain Tone Classification</h3>
+        <p class="project-desc">Studied whether BERT models trained on incompatible label systems can still map to a shared target using a small calibration set. One model used tone labels, the other emotion labels. The finding: domain alignment matters more than dataset size.</p>
+        <div class="project-outcome"><div class="project-outcome-label">Key Insight</div><div class="project-outcome-text">Smaller domain-aligned dataset (2.6k) outperformed the larger misaligned one (8k): 54.6% vs 46.5%</div></div>
+        <div class="project-tags"><span class="tag">BERT</span><span class="tag">PyTorch</span><span class="tag">HuggingFace</span><span class="tag">NLP</span><span class="tag">Transfer Learning</span></div>
+        <div class="project-actions"><button class="deep-dive-btn">Deep dive →</button></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title" style="margin-bottom:3rem">Where I've built.</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">Sep 2022 – Jul 2024</div>
+        <div class="timeline-role">Business Analyst</div>
+        <div class="timeline-company">EXL · Gurugram, India</div>
+        <ul class="timeline-bullets">
+          <li>Embedded with the data team for a Big Six UK energy provider, building and running 20+ daily data engineering scripts that processed over 100K financial transactions across cash matching, unallocated transactions, and balance reconciliation for a regulated portfolio of around 10 million households.</li>
+          <li>Built 6+ Power BI dashboards for regulatory compliance, cash flow tracking, and final credits reporting, used directly by finance leadership for strategic planning and audit readiness.</li>
+          <li>Automated recurring financial reports in SQL and Python, cutting turnaround on time-sensitive queries from 24 hours to under 1, and took ownership of processes handed over from the onshore team.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Jul 2021 – Sep 2022</div>
+        <div class="timeline-role">Developer, BI & Analytics</div>
+        <div class="timeline-company">Team Computers · Gurugram, India</div>
+        <ul class="timeline-bullets">
+          <li>Built Python predictive models on wind turbine sensor data to identify downtime drivers, with real-time Tableau dashboards for performance monitoring and energy forecasting.</li>
+          <li>Integrated weather forecast data into the analytics pipeline, building energy production models that improved resource planning and operational efficiency by 15%.</li>
+          <li>Reduced unplanned turbine downtime by 20% and maintenance costs by 15% through predictive maintenance models.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Skills</div>
+    <h2 class="section-title">Tech stack.</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <div class="skill-cat-title">AI & Agents</div>
+        <div class="skill-list">
+          <div class="skill-item">Anthropic API / Tool Use <span class="skill-level">Proficient</span></div>
+          <div class="skill-item">LangGraph <span class="skill-level">Proficient</span></div>
+          <div class="skill-item">LangChain / LCEL <span class="skill-level">Proficient</span></div>
+          <div class="skill-item">Prompt Engineering <span class="skill-level">Advanced</span></div>
+          <div class="skill-item">LLM-as-Judge / Eval <span class="skill-level">Proficient</span></div>
+          <div class="skill-item">BERT / Transformers <span class="skill-level">Proficient</span></div>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">ML & Data</div>
+        <div class="skill-list">
+          <div class="skill-item">Python (pandas, NumPy) <span class="skill-level">Expert</span></div>
+          <div class="skill-item">SQL <span class="skill-level">Expert</span></div>
+          <div class="skill-item">scikit-learn / XGBoost <span class="skill-level">Advanced</span></div>
+          <div class="skill-item">SHAP / Explainability <span class="skill-level">Advanced</span></div>
+          <div class="skill-item">Statistical Modeling <span class="skill-level">Advanced</span></div>
+          <div class="skill-item">ETL & Data Pipelines <span class="skill-level">Advanced</span></div>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Tools & Infra</div>
+        <div class="skill-list">
+          <div class="skill-item">Streamlit <span class="skill-level">Advanced</span></div>
+          <div class="skill-item">Docker <span class="skill-level">Proficient</span></div>
+          <div class="skill-item">Git / GitHub <span class="skill-level">Proficient</span></div>
+          <div class="skill-item">Tableau / Power BI <span class="skill-level">Advanced</span></div>
+          <div class="skill-item">AWS <span class="skill-level">Foundational</span></div>
+          <div class="skill-item">ChromaDB / Vector Stores <span class="skill-level">Proficient</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <div class="section-label">Education & Certifications</div>
+    <h2 class="section-title">Credentials.</h2>
+    <div class="edu-grid">
+      <div class="edu-card primary">
+        <div class="edu-degree">MS Information Technology</div>
+        <div class="edu-school">Arizona State University</div>
+        <div class="edu-meta"><span>2024 – May 2026</span><span>Tempe, AZ</span></div>
+        <div class="edu-gpa">★ 4.0 GPA</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">B.Tech Computer Science</div>
+        <div class="edu-school">Kurukshetra University</div>
+        <div class="edu-meta"><span>2015 – 2019</span><span>Haryana, India</span></div>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem">
+      <div style="font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem">Certifications</div>
+      <div class="certs-grid">
+        <div class="cert-card"><div class="cert-name">AWS Academy ML Foundations</div><div class="cert-issuer">Amazon Web Services</div></div>
+        <div class="cert-card"><div class="cert-name">Prompt Engineering for Developers</div><div class="cert-issuer">DeepLearning.AI</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container">
+    <div class="section-label">Testimonials</div>
+    <h2 class="section-title">What leaders say.</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"A pivotal role in developing complex analytics processes and delivering critical MI reports that reduced client costs."</div>
+        <div class="testimonial-author"><div class="testimonial-avatar">MG</div><div><div class="testimonial-name">Manvi Gupta</div><div class="testimonial-role">Sr. AVP · EXL</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"Unparalleled professionalism and data-driven insight that guided our organization toward optimal outcomes."</div>
+        <div class="testimonial-author"><div class="testimonial-avatar">AK</div><div><div class="testimonial-name">Ajeet Singh Kaintura</div><div class="testimonial-role">Manager, Transformation & Solutioning · EXL</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Let's talk.</h2>
+        <p style="color:var(--text2);font-size:0.95rem;line-height:1.85;margin-top:1rem">Open to full-time AI Engineer roles. Also happy to discuss internships, research collaborations, or interesting problems in the LLM and agent space.</p>
+        <div class="resume-cta">
+          <div class="resume-cta-text"><strong>View Resume</strong><span>Latest version · PDF · 1 page</span></div>
+          <a href="Apaar_Saroj_Resume.pdf" class="resume-btn" target="_blank" rel="noopener">View →</a>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:apaarsaroj@gmail.com" class="contact-link email">
+            <div class="contact-link-label"><div class="contact-link-icon email">✉</div><div><div class="contact-link-name">Email</div><div class="contact-link-value">apaarsaroj@gmail.com</div></div></div>
+            <span class="contact-link-arrow" style="color:var(--email)">→</span>
+          </a>
+          <a href="https://www.linkedin.com/in/apaarsaroj" target="_blank" class="contact-link linkedin">
+            <div class="contact-link-label"><div class="contact-link-icon linkedin">in</div><div><div class="contact-link-name">LinkedIn</div><div class="contact-link-value">linkedin.com/in/apaarsaroj</div></div></div>
+            <span class="contact-link-arrow" style="color:var(--linkedin)">→</span>
+          </a>
+          <a href="https://github.com/apaarsaroj" target="_blank" class="contact-link github">
+            <div class="contact-link-label"><div class="contact-link-icon github">gh</div><div><div class="contact-link-name">GitHub</div><div class="contact-link-value">github.com/apaarsaroj</div></div></div>
+            <span class="contact-link-arrow" style="color:var(--github)">→</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <form action="https://formspree.io/f/xlgyjkew" method="POST" style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0">
+          <div style="font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Send a message</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+            <div>
+              <label style="font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;display:block;margin-bottom:0.4rem">Name</label>
+              <input type="text" name="name" placeholder="Your name" required style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:0.65rem 0.9rem;color:var(--text);font-size:0.88rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='var(--accent3)'" onblur="this.style.borderColor='var(--border)'">
+            </div>
+            <div>
+              <label style="font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;display:block;margin-bottom:0.4rem">Email</label>
+              <input type="email" name="email" placeholder="your@email.com" required style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:0.65rem 0.9rem;color:var(--text);font-size:0.88rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='var(--accent3)'" onblur="this.style.borderColor='var(--border)'">
+            </div>
+          </div>
+          <div>
+            <label style="font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;display:block;margin-bottom:0.4rem">Message</label>
+            <textarea name="message" rows="4" placeholder="Tell me about the role or opportunity..." required style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:0.65rem 0.9rem;color:var(--text);font-size:0.88rem;font-family:'DM Sans',sans-serif;outline:none;resize:vertical;transition:border-color 0.2s" onfocus="this.style.borderColor='var(--accent3)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+          </div>
+          <button type="submit" style="background:var(--accent2);color:#fff;border:none;padding:0.75rem 1.5rem;border-radius:4px;font-family:'Syne',sans-serif;font-weight:600;font-size:0.88rem;cursor:pointer;transition:opacity 0.2s;display:flex;align-items:center;justify-content:space-between" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">Send message <span>→</span></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="footer-text">© 2026 Apaar Saroj · Built with care</div></footer>
+
+<!-- PERSONAL TRAINER AGENT MODAL -->
+<div class="modal-overlay" id="modal-trainer" onclick="closeOnOverlay(event,'modal-trainer')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-org">Personal Project · Agentic AI · LangGraph + RAG · 2025</div>
+      <div class="modal-title">Personal Trainer AI Agent</div>
+      <div class="modal-tech-grid"><span class="modal-tag">Python</span><span class="modal-tag">LangGraph</span><span class="modal-tag">LangChain</span><span class="modal-tag">ChromaDB</span><span class="modal-tag">RAG</span><span class="modal-tag">PubMed API</span><span class="modal-tag">SQLite</span><span class="modal-tag">sentence-transformers</span></div>
+      <div class="modal-links">
+        <a href="https://github.com/apaarsaroj/personal-trainer-agent/tree/langchain" target="_blank" class="modal-link github">⌥ GitHub Repo</a>
+      </div>
+      <button class="modal-close" onclick="closeModal('trainer')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">The Problem</div>
+        <p class="modal-desc">Generic fitness apps give the same advice to everyone and forget you between sessions. The goal was an agent that knows the member before the first message, grounds every recommendation in real research, and remembers the conversation across sessions rather than just within one.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Architecture</div>
+        <div class="modal-pipeline">
+          <div class="pipeline-step"><span class="pipeline-num">01</span><div class="pipeline-content"><strong>LangGraph state graph</strong><span>TrainerState holds messages, user_id, current_plan, and session_count. Two nodes: chatbot (Claude with bound tools) and tools (LangGraph ToolNode). Conditional edge on last message tool_calls routes between them. Loops chatbot to tools and back until no more tool calls, then END.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">02</span><div class="pipeline-content"><strong>SQLite checkpointer for persistent memory</strong><span>SqliteSaver from langgraph.checkpoint.sqlite persists full conversation state keyed by thread_id, set to the member PT-XXXX ID. The agent picks up exactly where it left off across sessions.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">03</span><div class="pipeline-content"><strong>RAG knowledge base</strong><span>PubMed abstracts fetched via Biopython Entrez across 8 fitness topics (hypertrophy, protein intake, progressive overload, rest intervals, compound movements, injury prevention, sleep recovery, nutrition timing) combined with curated exercise markdown. Chunked with RecursiveCharacterTextSplitter, embedded with all-MiniLM-L6-v2, stored in ChromaDB.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">04</span><div class="pipeline-content"><strong>5 LangChain tools via @tool with member_id closure</strong><span>log_member_workout, get_member_workout_history, create_workout_plan, get_member_profile, and search_fitness_knowledge. member_id is closed over in build_tools() so Claude never needs to pass it as an argument.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">05</span><div class="pipeline-content"><strong>Profile injection at session start</strong><span>Member profile (age, weight, goals, injuries, training days) is injected into the system prompt template at login via load_system_prompt(). Claude has full context before the first message. get_member_profile exists only for edge cases like mid-session profile updates.</span></div></div>
+        </div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Design decisions worth noting</div>
+        <div class="modal-finding"><div class="modal-finding-title">search_fitness_knowledge runs before any advice</div><div class="modal-finding-desc">The tool description says "use this before giving any fitness advice." That single instruction means Claude consistently retrieves relevant PubMed abstracts and exercise data before responding, grounding recommendations in actual research rather than training data alone.</div></div>
+        <div class="modal-finding"><div class="modal-finding-title">SQLite over in-memory state</div><div class="modal-finding-desc">Most agent demos use in-memory conversation history that dies when the process ends. SqliteSaver persists the full LangGraph checkpoint by thread_id so the agent picks up exactly where it left off. This is the difference between a demo and something that could actually be used.</div></div>
+        <div class="modal-finding"><div class="modal-finding-title">Two branches, two deliberately different designs</div><div class="modal-finding-desc">The main branch implements the agent loop from scratch using the raw Anthropic API with no frameworks. This branch uses LangGraph and LangChain. Both solve the same problem. The contrast was intentional: understand the mechanics first, then use the abstraction that fits the task.</div></div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">What I would build next</div>
+        <p class="modal-desc" style="font-size:0.85rem">A Streamlit front end to make it shareable beyond the CLI. Progress tracking across weeks with visualisations pulled from workout history. Expand the knowledge base to cover nutrition. Add parallel tool use to fetch history and search the knowledge base in one round trip.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HEALTHCARE MODAL -->
+<div class="modal-overlay" id="modal-healthcare" onclick="closeOnOverlay(event,'modal-healthcare')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-org">ASU · Graduate Capstone · Jan–May 2026</div>
+      <div class="modal-title">Healthcare System Efficiency Evaluation Framework</div>
+      <div class="modal-tech-grid"><span class="modal-tag">Python</span><span class="modal-tag">scikit-learn</span><span class="modal-tag">SHAP</span><span class="modal-tag">K-Means</span><span class="modal-tag">Random Forest</span><span class="modal-tag">Streamlit</span><span class="modal-tag">Docker</span><span class="modal-tag">Panel Regression</span></div>
+      <div class="modal-links">
+        <a href="https://github.com/apaarsaroj/healthcare-efficiency-framework" target="_blank" class="modal-link github">⌥ GitHub Repo</a>
+        <a href="https://healthcare-efficiency-framework.streamlit.app" target="_blank" class="modal-link live">● Live Demo</a>
+      </div>
+      <button class="modal-close" onclick="closeModal('healthcare')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">The Problem</div>
+        <p class="modal-desc">Healthcare systems worldwide face a fundamental question: are they getting enough health benefit per dollar spent? This project builds a composite efficiency metric, the Healthcare Efficiency Score (HES), using objective entropy-based weighting so the data decides what matters rather than arbitrary assumptions.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Pipeline</div>
+        <div class="modal-pipeline">
+          <div class="pipeline-step"><span class="pipeline-num">01</span><div class="pipeline-content"><strong>Data Collection & Cleaning</strong><span>WHO, OECD, World Bank, Our World in Data. 4 sources, 52 countries, 2000–2022. APIs fetched programmatically.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">02</span><div class="pipeline-content"><strong>HES Scoring via Shannon Entropy</strong><span>Min-max scaling of UHC coverage, financial protection, and CO2 intensity. Entropy weights: CO2 (0.408), UHC (0.351), Financial (0.240). HES = weighted sum / log(1 + spending%).</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">03</span><div class="pipeline-content"><strong>Two-Way Fixed Effects Regression</strong><span>Country and year fixed effects isolate within-country causal impact of spending. Clustered standard errors by country.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">04</span><div class="pipeline-content"><strong>K-Means Clustering (k=5)</strong><span>k selected via silhouette score. 5 country archetypes from High-Spend/Low-Coverage to Low-Spend/High-Efficiency.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">05</span><div class="pipeline-content"><strong>Random Forest + SHAP</strong><span>GroupKFold CV by country prevents data leakage. SHAP waterfall plots show per-country variable contributions.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">06</span><div class="pipeline-content"><strong>Streamlit Dashboard + Docker</strong><span>6-tab dashboard: choropleth maps, cluster plots, regression results, SHAP plots, US deep-dive, live policy simulator.</span></div></div>
+        </div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Key Results</div>
+        <div class="modal-results-grid">
+          <div class="result-card"><span class="result-num">#43 / 52</span><span class="result-label">US efficiency rank despite highest spending (16.5% of GDP)</span></div>
+          <div class="result-card"><span class="result-num">k = 5</span><span class="result-label">Optimal country archetypes via silhouette score</span></div>
+          <div class="result-card"><span class="result-num">0.408</span><span class="result-label">Shannon entropy weight for CO2, highest discriminating variable</span></div>
+          <div class="result-card"><span class="result-num">52 countries</span><span class="result-label">Panel data 2000–2022 from 4 international sources</span></div>
+        </div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Top Findings</div>
+        <div class="modal-finding"><div class="modal-finding-title">The US Efficiency Paradox</div><div class="modal-finding-desc">US spends 16.5% of GDP yet ranks #43/52. UHC score of 87 is only 7 points above average despite nearly double the spending. The model isolates over-spending relative to outcomes as the structural driver.</div></div>
+        <div class="modal-finding"><div class="modal-finding-title">Efficiency is not the same as spending</div><div class="modal-finding-desc">Turkey (HES 0.48) and Costa Rica (0.42) outperform all high-income spenders at 3–7% of GDP. Efficient system design beats raw investment.</div></div>
+        <div class="modal-finding"><div class="modal-finding-title">Entropy-driven objectivity</div><div class="modal-finding-desc">Shannon entropy rewards variables with more cross-country variation. CO2 intensity varies most across countries, earning the highest weight. Fully data-driven with no arbitrary assumptions.</div></div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">What I'd improve</div>
+        <p class="modal-desc" style="font-size:0.85rem">Causal inference via synthetic control or DiD. Time-lagged spending features. Sub-national data extension. Uncertainty bands on the policy simulator.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NEWS SUMMARIZER MODAL -->
+<div class="modal-overlay" id="modal-news" onclick="closeOnOverlay(event,'modal-news')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-org">Personal Project · Gen-AI · LangGraph · 2025</div>
+      <div class="modal-title">AI News Summarizer</div>
+      <div class="modal-tech-grid"><span class="modal-tag">Python</span><span class="modal-tag">LangGraph</span><span class="modal-tag">LangChain</span><span class="modal-tag">Claude Haiku</span><span class="modal-tag">NewsAPI</span><span class="modal-tag">ROUGE-L</span><span class="modal-tag">LLM-as-Judge</span><span class="modal-tag">Streamlit</span></div>
+      <div class="modal-links">
+        <a href="https://github.com/apaarsaroj/news-summarizer" target="_blank" class="modal-link github">⌥ GitHub Repo</a>
+        <a href="https://news-summarizer-langgraph.streamlit.app" target="_blank" class="modal-link live">● Live Demo</a>
+      </div>
+      <button class="modal-close" onclick="closeModal('news')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">The Problem</div>
+        <p class="modal-desc">News articles are long, written for general audiences, and hard to evaluate at scale without human raters. The goal was a system that could fetch live articles on any topic, rank them by relevance, summarize the top ones with Claude, score output quality automatically, and if quality fell short, refine the query and try again without any human intervention.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Graph Architecture</div>
+        <div class="modal-note" style="font-family:monospace;font-size:0.8rem;line-height:1.8">START → scrape → relevance → summarize → evaluate → router<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quality low? → refine → scrape (up to 3x)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quality OK? → END</div>
+        <div class="modal-pipeline" style="margin-top:1.25rem">
+          <div class="pipeline-step"><span class="pipeline-num">01</span><div class="pipeline-content"><strong>scrape</strong><span>Fetches articles from NewsAPI and scrapes full text from each URL via BeautifulSoup. Passes raw article text into the graph state.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">02</span><div class="pipeline-content"><strong>relevance</strong><span>Claude scores each article against the search topic. Top 3 by relevance score are kept for summarisation. Low-signal articles are dropped before any expensive summarize call.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">03</span><div class="pipeline-content"><strong>summarize</strong><span>Claude Haiku summarises each top article in 2–4 sentences. Prompt-engineered for factual fidelity with no padding.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">04</span><div class="pipeline-content"><strong>evaluate</strong><span>Two LLM-as-Judge chains score faithfulness and conciseness independently. ROUGE-L measures content recall against the source. All three scores stored per article in graph state.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">05</span><div class="pipeline-content"><strong>router (conditional edge)</strong><span>If average quality meets the threshold, exit. If below threshold and iterations are under 3, route to refine. Max iterations guard prevents infinite loops.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">06</span><div class="pipeline-content"><strong>refine</strong><span>Claude rewrites the search query to be more specific before the next scrape iteration. The graph adapts the query rather than retrying blindly.</span></div></div>
+        </div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Key Findings</div>
+        <div class="modal-finding"><div class="modal-finding-title">LLM-as-Judge and ROUGE-L are complementary, not redundant</div><div class="modal-finding-desc">ROUGE-L measures surface-level content recall and penalises paraphrasing even when meaning is preserved. LLM-as-Judge catches faithfulness violations and padding that ROUGE scores as fine. Running both catches failure modes that neither finds alone.</div></div>
+        <div class="modal-finding"><div class="modal-finding-title">Relevance filtering is the highest-leverage step</div><div class="modal-finding-desc">Ranking articles before passing them to Claude meant the summariser was always working on the right material. Removing this filter degraded faithfulness scores significantly. The model was faithful to the wrong content.</div></div>
+        <div class="modal-finding"><div class="modal-finding-title">Query refinement outperformed prompt tuning</div><div class="modal-finding-desc">When summaries scored low, rewriting the NewsAPI query produced a bigger quality jump than adjusting the summarisation prompt. Bad input was the bottleneck. The model was doing its job; the search was pulling weak articles.</div></div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">What I'd improve</div>
+        <p class="modal-desc" style="font-size:0.85rem">Swap ROUGE-L for BERTScore for semantic similarity beyond surface overlap. Add parallel summarisation across articles to cut latency. Extend the eval rubric to cover source attribution. Add streaming output in the Streamlit UI.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NLP MODAL -->
+<div class="modal-overlay" id="modal-nlp" onclick="closeOnOverlay(event,'modal-nlp')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-org">ASU · NLP Exploration · 2024</div>
+      <div class="modal-title">Cross-Domain Tone Classification</div>
+      <div class="modal-tech-grid"><span class="modal-tag">BERT</span><span class="modal-tag">PyTorch</span><span class="modal-tag">HuggingFace</span><span class="modal-tag">Transfer Learning</span><span class="modal-tag">NLP</span><span class="modal-tag">Python</span></div>
+      <div class="modal-links">
+        <a href="https://github.com/apaarsaroj/Cross-Domain-Tone-Classification" target="_blank" class="modal-link github">⌥ GitHub Repo</a>
+      </div>
+      <button class="modal-close" onclick="closeModal('nlp')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Context</div>
+        <div class="modal-note"><strong>Exploratory research project, not a production system.</strong> The value is in the problem framing and the design decision around learned calibration mapping rather than benchmark-level results.</div>
+        <p class="modal-desc">Real-world AI systems often need to combine models trained on incompatible label systems. This project explores whether a small calibration set can learn that mapping automatically rather than hardcoding it by hand.</p>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">The Core Idea</div>
+        <div class="modal-pipeline">
+          <div class="pipeline-step"><span class="pipeline-num">01</span><div class="pipeline-content"><strong>Train on incompatible label spaces</strong><span>Model B: Tone Analysis (2,684 samples). Model C: GoEmotions (8,044 samples). Each keeps its own taxonomy with no manual unification.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">02</span><div class="pipeline-content"><strong>Learn the mapping via calibration set</strong><span>A small split of the target dataset (Polite / Professional / Casual) learns the optimal greedy mapping. Data-driven rather than handcrafted.</span></div></div>
+          <div class="pipeline-step"><span class="pipeline-num">03</span><div class="pipeline-content"><strong>Evaluate on held-out test set</strong><span>4,800 samples. Model B outperforms Model C despite having 3x fewer training samples.</span></div></div>
+        </div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Results</div>
+        <table class="modal-table">
+          <thead><tr><th>Model</th><th>Training Data</th><th>Accuracy</th><th>Macro F1</th></tr></thead>
+          <tbody>
+            <tr><td>Model B, Tone Analysis</td><td>2,684 samples</td><td style="color:var(--green)">54.58%</td><td style="color:var(--green)">0.5337</td></tr>
+            <tr><td>Model C, GoEmotions</td><td>8,044 samples</td><td>46.50%</td><td>0.4635</td></tr>
+          </tbody>
+        </table>
+        <div class="modal-note" style="margin-top:1rem"><strong>Note:</strong> Random baseline is approximately 33% on this 3-class problem. Greedy label mapping and synthetic ground truth are known limitations.</div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">Key Takeaway</div>
+        <div class="modal-finding"><div class="modal-finding-title">Domain alignment beats dataset size</div><div class="modal-finding-desc">3x fewer samples and better results because label space alignment mattered more than scale. A practically important signal for anyone building AI systems from multiple data sources.</div></div>
+        <div class="modal-finding"><div class="modal-finding-title">Calibration mapping as a design pattern</div><div class="modal-finding-desc">Treating label mapping as a learned function rather than a hardcoded lookup is a viable approach to cross-dataset AI integration with real production relevance.</div></div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section">
+        <div class="modal-section-title">What I'd do differently</div>
+        <p class="modal-desc" style="font-size:0.85rem">Replace greedy mapping with optimal transport. Add a zero-shot LLM baseline. Use LoRA instead of full fine-tuning. Generate a non-synthetic ground truth dataset.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(id){document.getElementById('modal-'+id).classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(id){document.getElementById('modal-'+id).classList.remove('open');document.body.style.overflow=''}
+function closeOnOverlay(e,id){if(e.target===document.getElementById('modal-'+id))closeModal(id)}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));document.body.style.overflow=''}})
+
+document.addEventListener('DOMContentLoaded',function(){
+  const form=document.querySelector('form[action*="formspree"]');
+  if(!form)return;
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    const btn=form.querySelector('button[type="submit"]');
+    const orig=btn.innerHTML;
+    btn.innerHTML='Sending... →';
+    btn.disabled=true;
+    try{
+      const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+      if(res.ok){
+        btn.innerHTML='Message sent ✓';
+        form.reset();
+        setTimeout(()=>{btn.innerHTML=orig;btn.disabled=false;},4000);
+      } else {
+        throw new Error();
+      }
+    } catch {
+      btn.innerHTML='Error — try emailing directly';
+      setTimeout(()=>{btn.innerHTML=orig;btn.disabled=false;},4000);
+    }
+  });
+});
+</script>
+</body>
+</html>
